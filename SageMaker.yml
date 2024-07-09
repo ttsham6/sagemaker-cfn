@@ -117,10 +117,12 @@ Resources:
         JupyterLabAppSettings:
           DefaultResourceSpec:
             InstanceType: "ml.t3.medium"
-            SageMakerImageArn: !Sub
-              - "arn:aws:sagemaker:${AWS::Region}:${SgDistImgNum}:image/sagemaker-distribution-gpu-v1"
-              - SgDistImgNum:
-                  !FindInMap [SgDistImgMap, !Ref AWS::Region, ImageNumber]
+            SageMakerImageVersionArn: !Sub
+              - "arn:aws:sagemaker:${AWS::Region}:${SgDistImgNum}:image-version/sagemaker-distribution-cpu/1"
+              - {
+                  SgDistImgNum:
+                    !FindInMap [SgDistImgMap, !Ref AWS::Region, ImageNumber],
+                }
         SpaceStorageSettings:
           EbsStorageSettings:
             EbsVolumeSizeInGb: 5
