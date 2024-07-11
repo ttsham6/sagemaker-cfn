@@ -1,4 +1,4 @@
-# sagamaker-cfn
+# sagemaker-cfn
 SageMakerのCFnテンプレートです
 
 ## 前提条件
