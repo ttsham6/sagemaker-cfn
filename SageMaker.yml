@@ -23,7 +23,7 @@ Parameters:
     Default: "10.100.0.16/28"
 
 Mappings:
-  # ref: https://docs.aws.amazon.com/ja_jp/sagemaker/latest/dg/notebooks-available-images.html
+  # Refer to: https://docs.aws.amazon.com/ja_jp/sagemaker/latest/dg/notebooks-available-images.html
   SageMakerDistImgMap:
     us-east-1:
       ImageNumber: "885854791233"
