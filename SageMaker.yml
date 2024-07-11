@@ -86,6 +86,9 @@ Resources:
         ExecutionRole: !GetAtt SageMakerExecutionRole.Arn
         StudioWebPortal: ENABLED
         DefaultLandingUri: "studio::"
+        JupyterLabAppSettings:
+          LifecycleConfigArns:
+            - !Sub "arn:aws:sagemaker:${AWS::Region}:${AWS::AccountId}:studio-lifecycle-config/jupyter-lab-auto-stop-idle"
       DefaultSpaceSettings:
         ExecutionRole: !GetAtt SageMakerExecutionRole.Arn
       VpcId: !Ref Vpc
