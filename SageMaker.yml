@@ -90,18 +90,11 @@ Resources:
         ExecutionRole: !GetAtt SageMakerExecutionRole.Arn
         StudioWebPortal: ENABLED
         DefaultLandingUri: "studio::"
-        JupyterLabAppSettings:
-          LifecycleConfigArns:
-            - !Sub "arn:aws:sagemaker:${AWS::Region}:${AWS::AccountId}:studio-lifecycle-config/jupyter-lab-auto-stop-idle"
       DefaultSpaceSettings:
         ExecutionRole: !GetAtt SageMakerExecutionRole.Arn
         JupyterLabAppSettings:
-          DefaultResourceSpec:
-            InstanceType: "ml.t3.medium"
-            SageMakerImageVersionArn: !Sub
-              - "arn:aws:sagemaker:${AWS::Region}:${SageMakerDistImg}:image-version/sagemaker-distribution-cpu/1"
-              - { SageMakerDistImg: !FindInMap [SageMakerDistImgMap, !Ref AWS::Region, ImageNumber] }
-            LifecycleConfigArn: !Sub "arn:aws:sagemaker:${AWS::Region}:${AWS::AccountId}:studio-lifecycle-config/jupyter-lab-auto-stop-idle"
+          LifecycleConfigArns:
+            - !Sub "arn:aws:sagemaker:${AWS::Region}:${AWS::AccountId}:studio-lifecycle-config/jupyter-lab-auto-stop-idle"
 
   SageMakerStudioUserProfile:
     Type: AWS::SageMaker::UserProfile
@@ -124,6 +117,12 @@ Resources:
         SharingType: Private
       SpaceSettings:
         AppType: JupyterLab
+        JupyterLabAppSettings:
+          DefaultResourceSpec:
+            InstanceType: "ml.t3.medium"
+            SageMakerImageVersionArn: !Sub
+              - "arn:aws:sagemaker:${AWS::Region}:${SageMakerDistImg}:image-version/sagemaker-distribution-cpu/1"
+              - { SageMakerDistImg: !FindInMap [SageMakerDistImgMap, !Ref AWS::Region, ImageNumber] }
         SpaceStorageSettings:
           EbsStorageSettings:
             EbsVolumeSizeInGb: 5
