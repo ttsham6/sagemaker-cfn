@@ -24,7 +24,7 @@ Parameters:
 
 Mappings:
   # Refer to: https://docs.aws.amazon.com/ja_jp/sagemaker/latest/dg/notebooks-available-images.html
-  SageMakerDistImgMap:
+  SageMakerDistImgNumNumMap:
     us-east-1:
       ImageNumber: "885854791233"
     us-east-2:
@@ -121,8 +121,8 @@ Resources:
           DefaultResourceSpec:
             InstanceType: "ml.t3.medium"
             SageMakerImageVersionArn: !Sub
-              - "arn:aws:sagemaker:${AWS::Region}:${SageMakerDistImg}:image-version/sagemaker-distribution-cpu/1"
-              - { SageMakerDistImg: !FindInMap [SageMakerDistImgMap, !Ref AWS::Region, ImageNumber] }
+              - "arn:aws:sagemaker:${AWS::Region}:${SageMakerDistImgNum}:image-version/sagemaker-distribution-cpu/1"
+              - { SageMakerDistImgNum: !FindInMap [SageMakerDistImgNumNumMap, !Ref AWS::Region, ImageNumber] }
         SpaceStorageSettings:
           EbsStorageSettings:
             EbsVolumeSizeInGb: 5
