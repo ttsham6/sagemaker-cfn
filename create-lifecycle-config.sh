@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Create lifecycle configuration to SageMaker Domain
+# Create lifecycle configuration
 # Refer to: https://github.com/aws-samples/sagemaker-studio-apps-lifecycle-config-examples/tree/main/jupyterlab/auto-stop-idle
 mkdir -p tmp
 cd tmp/
